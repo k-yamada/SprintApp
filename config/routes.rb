@@ -1,9 +1,11 @@
 Timetracker::Application.routes.draw do
   
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   post '/calendar/filter', :to => 'calendar#set_filters', :as => 'filter_calendar'    
   get '/calendar/events', :to => 'calendar#events', :as => 'calendar_events'
 
-  devise_for :admin_users, ActiveAdmin::Devise.config        
+  #devise_for :admin_users, ActiveAdmin::Devise.config, ActiveAdmin::Devise.config        
   ActiveAdmin.routes(self)
   
   devise_scope :admin_user do

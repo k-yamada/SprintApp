@@ -30,9 +30,6 @@ ActiveAdmin.register AdminUser, :sort_order => "email_desc" do
   scope :inactive
   
   AdminUser::ROLES.each do |role|
-   scope role.to_sym do |users|
-     users.where :role => role
-   end
   end
   
 

@@ -1,19 +1,20 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
 
-gem 'rails', '3.2.13'
-gem 'actionpack', '3.2.13' # added b/c google_charts gem isn't being a good citizen in gemspec
+gem 'rails', '4.2.1'
+gem 'actionpack'
 
-gem 'pg'
+#gem 'pg'
+gem 'sqlite3'
 gem 'foreman'
 gem 'thin'
 
 gem 'cancan'
-gem 'activeadmin', :git => 'git://github.com/macfanatic/active_admin.git', branch: 'stable_batch_actions'
+gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'sass-rails'
-gem "meta_search",    '>= 1.1.0.pre'
 
-gem 'ckeditor_rails', :require => 'ckeditor-rails'
+gem 'nokogiri', '~> 1.6'
+
+gem 'ckeditor_rails'
 gem 'haml'
 
 gem 'paper_trail'
@@ -36,8 +37,8 @@ gem 'date_validator'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'coffee-rails', '~> 4.1.0'
+  gem 'uglifier', '>= 1.3.0'
   gem 'therubyracer'
 end
 

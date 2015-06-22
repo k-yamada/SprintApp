@@ -1,4 +1,11 @@
 class AdminUser < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, 
+         :recoverable, :rememberable, :trackable, :validatable
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me
   
   ROLES = %w(admin employee)
     
@@ -11,10 +18,6 @@ class AdminUser < ActiveRecord::Base
   
   mount_uploader :avatar, AvatarUploader
     
-  ROLES.each do |role|
-    scope role.to_sym, where(["role = ?", role])
-  end
-  
   scope :sorted, order("lower(first_name) asc, lower(last_name) asc")
   scope :active, where("suspended_at IS NULL")
   scope :inactive, where("suspended_at IS NOT NULL")
